@@ -57,19 +57,19 @@ export default function App() {
 
    return (
       <>
-         <div className="bg-black/20 items-center justify-center flex">
+         <div className="items-center justify-center flex">
             <div className="p-4 w-full max-w-md h-full md:h-auto mt-20">
-               <div className="bg-white rounded-lg shadow">
+               <div className="dark:bg-white/20 bg-white rounded-lg shadow">
                   <div className="p-5">
                      <h3 className="text-2xl mb-0.5 font-medium" />
-                     <p className="mb-4 text-sm font-normal text-gray-800" />
+                     <p className="mb-4 text-sm font-normal text-gray-800 dark:text-gray-200" />
                      <div className="text-center">
-                        <p className="mb-3 text-2xl font-semibold leading-5 text-slate-900">
+                        <p className="mb-3 text-2xl font-semibold leading-5 text-slate-900 dark:text-gray-100">
                            Login to your account
                         </p>
                      </div>
                      <div className="mt-7 flex flex-col gap-2">
-                        <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+                        <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 dark:border-slate-800 bg-white/90 dark:bg-white/10 p-2 text-sm font-medium text-gary-800 dark:text-gray-300 outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
                            <img
                               src="https://www.svgrepo.com/show/512317/github-142.svg"
                               alt="GitHub"
@@ -77,7 +77,7 @@ export default function App() {
                            />
                            Continue with GitHub
                         </button>
-                        <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+                        <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 dark:border-slate-800 bg-white/90 dark:bg-white/10 p-2 text-sm font-medium text-gary-800 dark:text-gray-300 outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
                            <img
                               src="https://www.svgrepo.com/show/475656/google-color.svg"
                               alt="Google"
@@ -85,7 +85,7 @@ export default function App() {
                            />
                            Continue with Google
                         </button>
-                        <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+                        <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 dark:border-slate-800 bg-white/90 dark:bg-white/10 p-2 text-sm font-medium text-gary-800 dark:text-gray-300 outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
                            <img
                               src="https://www.svgrepo.com/show/448234/linkedin.svg"
                               alt="Google"
@@ -94,7 +94,7 @@ export default function App() {
                            Continue with LinkedIn
                         </button>
                      </div>
-                     <div className="flex w-full items-center gap-2 py-6 text-sm text-slate-600">
+                     <div className="flex w-full items-center gap-2 py-6 text-sm text-slate-600 dark:text-slate-10">
                         <div className="h-px w-full bg-slate-200" />
                         OR
                         <div className="h-px w-full bg-slate-200" />
@@ -106,7 +106,7 @@ export default function App() {
                         <input
                            type="email"
                            required={true}
-                           className="block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
+                           className="block w-full rounded-lg border dark:bg-black/20 border-gray-300 dark:border-gray-600 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
                            placeholder="Email Address"
                            {...register("email", { required: true })}
                         />
@@ -121,7 +121,7 @@ export default function App() {
                         </label>
                         <input
                            type="password"
-                           className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
+                           className="mt-2 block w-full rounded-lg border dark:bg-black/20 border-gray-300 dark:border-gray-600 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
                            placeholder="Password"
                            {...register("password", { required: true })}
                         />
@@ -146,8 +146,8 @@ export default function App() {
                            Continue
                         </button>
                      </form>
-                     <div className="mt-6 text-center text-sm text-slate-600">
-                        Don't have an account?
+                     <div className="mt-6 text-center text-sm text-slate-600 dark:text-gray-400">
+                        Don't have an account? {" "}
                         <Link
                            href="/signup"
                            className="font-medium text-[#4285f4]"

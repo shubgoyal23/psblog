@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
    return (
       <html lang="en">
-         <body className={`${inter.className} antialiased`}>
+         <body className={`${inter.className} antialiased bg-gray-50 text-black dark:bg-gray-950 dark:text-white `}>
             <Navbar />
             {children}
             <Toaster position="top-center" reverseOrder={false} />
