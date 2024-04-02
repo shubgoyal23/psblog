@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, ReactNode } from "react";
 import { Menu, Transition, Disclosure } from "@headlessui/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,6 +8,11 @@ import cx from "clsx";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeSwitcher from "./themeSwitcher";
+
+type menu = {
+   label: string;
+   href: string;
+};
 
 export default function Navbar() {
    const leftmenu = [
@@ -56,7 +61,7 @@ export default function Navbar() {
                <>
                   <div className="flex flex-wrap justify-between md:flex-nowrap md:gap-10">
                      <div className="order-1 hidden w-full flex-col items-center justify-start md:order-none md:flex md:w-auto md:flex-1 md:flex-row md:justify-end">
-                        {leftmenu.map((item, index) => (
+                        {leftmenu.map((item: menu, index) => (
                            <Fragment key={`${item.label}${index}`}>
                               {item.children && item.children.length > 0 ? (
                                  <DropdownMenu
@@ -68,9 +73,7 @@ export default function Navbar() {
                                  <Link
                                     href={item.href}
                                     key={`${item.label}${index}`}
-                                    className="px-5 py-2 text-sm font-medium text-gray-700 hover:text-blue-500 dark:text-gray-300"
-                                    target={item.external ? "_blank" : ""}
-                                    rel={item.external ? "noopener" : ""}
+                                    className="px-5 py-2 text-sm font-medium text-gray-700 hover:text-blue-500 dark:text-gray-300"                 
                                  >
                                     {item.label}
                                  </Link>
@@ -80,10 +83,20 @@ export default function Navbar() {
                      </div>
                      <div className="flex w-full items-center justify-between md:w-auto ml-2 md:ml-0">
                         <Link href="/" className="w-36 dark:hidden">
-                           <Image src={'/logo.png'} width={250} height={100} alt="logo of ps blogs"/>
+                           <Image
+                              src={"/logo.png"}
+                              width={250}
+                              height={100}
+                              alt="logo of ps blogs"
+                           />
                         </Link>
                         <Link href="/" className="hidden w-36 dark:block">
-                        <Image src={'/logodark.png'} width={250} height={100} alt="logo of ps blogs"/>
+                           <Image
+                              src={"/logodark.png"}
+                              width={250}
+                              height={100}
+                              alt="logo of ps blogs"
+                           />
                         </Link>
                         <Disclosure.Button
                            aria-label="Toggle Menu"
@@ -125,8 +138,7 @@ export default function Navbar() {
                                     href={item.href}
                                     key={`${item.label}${index}`}
                                     className="px-5 py-2 text-sm font-medium text-gray-700 hover:text-blue-500 dark:text-gray-300"
-                                    target={item.external ? "_blank" : ""}
-                                    rel={item.external ? "noopener" : ""}
+                                    
                                  >
                                     <span> {item.label}</span>
                                     {item.badge && (
@@ -144,18 +156,18 @@ export default function Navbar() {
                   <Disclosure.Panel>
                      <div className="order-2 mt-2 flex w-full bg-white/80 dark:bg-white/30 backdrop-blur-sm flex-col items-center justify-center md:hidden">
                         {mobilemenu.map((item, index) => (
-                           <Fragment key={`${item.label}${index}`}>
+                           <Fragment key={item.label + index}>
                               {item.children && item.children.length > 0 ? (
                                  <DropdownMenu
                                     menu={item}
-                                    key={`${item.label}${index}`}
+                                    key={item.label + index}
                                     items={item.children}
                                     mobile={true}
                                  />
                               ) : (
                                  <Link
-                                    href={item.href}                                   
-                                    key={`${item.label}${index}`}
+                                    href={item.href}
+                                    key={item.label + index}
                                     className="w-full text-center px-5 py-2 text-sm font-medium text-gray-700 hover:text-blue-500 dark:text-gray-300"
                                     target={item.external ? "_blank" : ""}
                                     rel={item.external ? "noopener" : ""}
@@ -170,12 +182,22 @@ export default function Navbar() {
                </>
             )}
          </Disclosure>
-         <ThemeSwitcher />
+         <div className="hidden md:block">
+            <ThemeSwitcher />
+         </div>
       </nav>
    );
 }
 
-const DropdownMenu = ({ menu, items, mobile }) => {
+const DropdownMenu = ({
+   menu,
+   items,
+   mobile,
+}: {
+   menu: any;
+   items: any[];
+   mobile?: boolean;
+}) => {
    return (
       <Menu as="div" className={cx("relative text-center", mobile && "w-full")}>
          {({ open }) => (
